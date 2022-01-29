@@ -1,10 +1,48 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+// import dependencies
+import React from 'react'
 
-test('renders header and body', () => {
-  render(<App />);
-  const headElement = screen.getByText(/header/i);
-  const bodyElement = screen.getByText(/body/i);
-  expect(headElement).toBeInTheDocument();
-  expect(bodyElement).toBeInTheDocument();
-});
+// import API mocking utilities from Mock Service Worker
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+
+// import react-testing methods
+import { render, waitFor, screen } from '@testing-library/react'
+
+// add custom jest matchers from jest-dom
+import '@testing-library/jest-dom'
+import App, { API_URL } from './App'
+import { DATA_SCIENCE_APPRENTICESHIP_ZEPTOLAB } from './mockResponse'
+
+// mock get requests to the API to return json
+const server = setupServer(
+  rest.get(API_URL, (req, res, ctx) => {
+    return res(ctx.json(DATA_SCIENCE_APPRENTICESHIP_ZEPTOLAB))
+  })
+)
+
+// establish API mocking before all tests
+beforeAll(() => server.listen())
+// reset any request handlers that are declared as part of our tests
+afterEach(() => server.resetHandlers())
+// clean up once tests are done
+afterAll(() => server.close())
+
+test('loads and displays greeting', async () => {
+  render(<App />)
+  expect(screen.getByText('loading')).toBeInTheDocument()
+  await waitFor(() =>
+    expect(screen.getByText('loaded')).toBeInTheDocument()
+  )
+})
+
+test('handle server error', async () => {
+  server.use(
+    rest.get(API_URL, (res, req, ctx) => {
+      return res(ctx.status(500))
+    })
+  )
+  const { findByTestId } = render(<App />)
+  expect(await findByTestId('api-error')).toHaveTextContent(
+    'Failed to load content'
+  )
+})
