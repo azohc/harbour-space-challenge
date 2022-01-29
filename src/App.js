@@ -6,9 +6,9 @@ function App() {
       <header className="App-header">
         header
       </header>
-      <body>
+      <div>
         body
-      </body>
+      </div>
     </div>
   );
 }

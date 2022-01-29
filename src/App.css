@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  min-height: 100vh;
+  font-size: var(--space-md)
 }
 
 .App-header {
@@ -8,6 +8,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: var(--space-xl);
   padding: 50px 50px;
 }
