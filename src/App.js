@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Countdown from './components/Countdown'
 
 const API_URL =
   'https://stage.harbour.space/api/v1/scholarship_pages/data-science-apprenticeship-zeptolab'
@@ -24,6 +25,17 @@ function App() {
       )
   }, [])
 
+  function renderApplicationCountdown() {
+    if (!isLoaded || !Object.keys(payload).length) return
+    return (
+      <Countdown
+        // deadline={payload['scholarship']['application_end_date']}
+        deadline={new Date().setFullYear(
+          new Date().getFullYear() + 1
+        )}
+      />
+    )
+  }
   return (
     <div className="App">
       <header className="App-header">header</header>
@@ -31,6 +43,7 @@ function App() {
       {error.length !== 0 ? (
         <div data-testid="api-error">Failed to load content</div>
       ) : null}
+      {renderApplicationCountdown()}
     </div>
   )
 }
