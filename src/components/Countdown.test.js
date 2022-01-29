@@ -24,7 +24,8 @@ test('future date prints time left', () => {
     />
   )
   // wait a second to get 364 days 23 hours 59 minutes 59 seconds (4 spans)
-  setTimeout(() => {}, 1000)
+  setTimeout(() => {
+    expect(screen.getAllByTestId('countdown-span')).toHaveLength(4)
+  }, 1000)
   expect(screen.queryByText("Time's up!")).not.toBeInTheDocument()
-  expect(screen.getAllByTestId('countdown-span')).toHaveLength(4)
 })
