@@ -1,12 +1,13 @@
 :root {
-  --space-xxs: .25rem;
-  --space-xs: .5rem;    
-  --space-sm: 1rem;    
-  --space-md: 1.5rem;    
-  --space-lg: 2rem;    
-  --space-xl: 3rem;    
-  --space-xxl: 6rem;    
-} 
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 6rem;
+  --purple: #685dc5;
+}
 
 html {
   block-size: 100%;
@@ -15,11 +16,9 @@ html {
 body {
   min-block-size: 100%;
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-block-start: var(--space-xs);
-  padding-block-end: var(--space-xs);
 }
