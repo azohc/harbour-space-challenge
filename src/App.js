@@ -29,10 +29,7 @@ function App() {
     if (!isLoaded || !Object.keys(payload).length) return
     return (
       <Countdown
-        // deadline={payload['scholarship']['application_end_date']}
-        deadline={new Date().setFullYear(
-          new Date().getFullYear() + 1
-        )}
+        deadline={payload['scholarship']['application_end_date']}
       />
     )
   }
