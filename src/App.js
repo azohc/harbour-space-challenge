@@ -15,8 +15,8 @@ function App() {
       .then(res => res.json())
       .then(
         result => {
-          setIsLoaded(true)
           setPayload(result)
+          setIsLoaded(true)
         },
         error => {
           setIsLoaded(true)
@@ -26,20 +26,25 @@ function App() {
   }, [])
 
   function renderApplicationCountdown() {
-    if (!isLoaded || !Object.keys(payload).length) return
+    if (!isLoaded) return
     return (
       <Countdown
         deadline={payload['scholarship']['application_end_date']}
       />
     )
   }
+
+  function renderErrorMessage() {
+    if (error.length !== 0) {
+      error.forEach(e => console.error(e))
+      return <div data-testid="api-error">Failed to load content</div>
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">header</header>
       {!isLoaded ? <div>loading</div> : <div>loaded</div>}
-      {error.length !== 0 ? (
-        <div data-testid="api-error">Failed to load content</div>
-      ) : null}
+      {renderErrorMessage()}
       {renderApplicationCountdown()}
     </div>
   )
