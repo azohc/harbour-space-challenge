@@ -25,6 +25,39 @@ function App() {
       )
   }, [])
 
+  function renderTopSection() {
+    if (!isLoaded) return
+    return (
+      <section id="top-section">
+        <div className="program-title">
+          {payload['scholarship']['name']}
+        </div>
+        <div className="program-description">
+          <p className="encourage-text">
+            {payload['scholarship']['encourage_text'][0]['data']}
+          </p>
+          <p className="scholarship-desc">
+            {payload['scholarship']['description'][0]['data']}
+          </p>
+          <button id="apply-button">Apply Now</button>
+        </div>
+        {payload['scholarship']['position'] ? (
+          <span>Position: {payload['scholarship']['position']}</span>
+        ) : null}
+        <div className="sponsor-countdown-location">
+          <div className="sponsor-container">
+            <img src="/zeptolab.png" alt="Zeptolab Logo"></img>
+            <div>Powered by:</div>
+            <div>Zeptolab</div>
+          </div>
+          <br></br>
+          {renderApplicationCountdown()}
+          Location
+        </div>
+      </section>
+    )
+  }
+
   function renderApplicationCountdown() {
     if (!isLoaded) return
     return (
@@ -46,10 +79,9 @@ function App() {
           isLoaded ? payload['scholarship']['program']['name'] : null
         }
       />
-      <header className="App-header">header</header>
-      {!isLoaded ? <div>loading</div> : <div>loaded</div>}
       {renderErrorMessage()}
-      {renderApplicationCountdown()}
+      {!isLoaded ? <div>loading</div> : <div>loaded</div>}
+      <div id="content-container">{renderTopSection()}</div>
     </div>
   )
 }
