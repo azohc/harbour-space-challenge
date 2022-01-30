@@ -1,3 +1,8 @@
+:root {
+  --padding-lr-desktop: 50px;
+  --padding-lr-mobile: 15px;
+}
+
 #navbar {
   background-color: var(--purple);
   position: absolute;
@@ -5,14 +10,17 @@
   height: 70px;
   display: flex;
   justify-content: space-between;
+  min-width: 300px;
+  transition: ease height 0.5s;
 }
 
 .left-title {
   position: relative;
   top: 70%;
   transform: translateY(-50%);
-  padding-left: 50px;
+  padding-left: var(--padding-lr-desktop);
   color: white;
+  transition: ease all 0.5s;
 }
 
 .harbour-space {
@@ -32,9 +40,23 @@
 #menu-button {
   all: unset;
   background-color: var(--purple);
-  padding-right: 50px;
+  padding-right: var(--padding-lr-desktop);
+  transition: ease all 0.5s;
 }
 
 #menu-button svg {
   cursor: pointer;
+}
+
+@media (max-width: 768px), (max-width: 834px) {
+  #navbar {
+    height: 50px;
+  }
+  .left-title {
+    padding-left: var(--padding-lr-mobile);
+    top: 60%;
+  }
+  #menu-button {
+    padding-right: var(--padding-lr-mobile);
+  }
 }
