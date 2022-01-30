@@ -9,7 +9,7 @@ const API_URL =
 function App() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [payload, setPayload] = useState({})
-  const [error, setError] = useState([])
+  const [error, setError] = useState()
 
   useEffect(() => {
     fetch(API_URL)
@@ -20,7 +20,6 @@ function App() {
           setIsLoaded(true)
         },
         error => {
-          setIsLoaded(true)
           setError(error)
         }
       )
@@ -36,8 +35,7 @@ function App() {
   }
 
   function renderErrorMessage() {
-    if (error.length !== 0) {
-      error.forEach(e => console.error(e))
+    if (error) {
       return <div data-testid="api-error">Failed to load content</div>
     }
   }
