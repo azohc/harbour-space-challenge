@@ -1,13 +1,81 @@
 .App {
   text-align: center;
-  font-size: var(--space-md)
+  font-size: var(--space-md);
 }
 
-.App-header {
+#content-container {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: var(--space-xl);
-  padding: 50px 50px;
+}
+
+section {
+  padding: var(--space-lg);
+}
+
+#top-section {
+  width: 70%;
+  height: 500px;
+  text-align: left;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+#top-section > div {
+  width: 45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.program-title {
+  font-size: xx-large;
+  font-weight: 600;
+  color: var(--purple);
+  height: min-content;
+}
+
+.program-description {
+  font-size: medium;
+  color: #272727;
+}
+
+.sponsor-countdown-location {
+}
+
+.encourage-text {
+  font-weight: 500;
+}
+
+.scholarship-desc {
+  font-weight: 200;
+}
+
+#apply-button {
+  all: unset;
+  cursor: pointer;
+  color: white;
+  background-color: var(--purple);
+  height: 45px;
+  width: 121px;
+  text-align: center;
+  border-radius: 30px;
+  font-size: small;
+}
+
+.sponsor-container {
+}
+
+@media (max-width: 768px), (max-width: 834px) {
+  #top-section > div {
+    width: fit-content;
+  }
+  #top-section {
+    height: unset;
+  }
+  .program-description {
+    order: 2;
+  }
 }
