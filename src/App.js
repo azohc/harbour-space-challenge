@@ -77,6 +77,21 @@ function App() {
     )
   }
 
+  function renderMidSection() {
+    if (!isLoaded) return
+    return (
+      <section id="mid-section">
+        <img src="/student.png" alt="student"></img>
+        <h1>About the apprenticeship</h1>
+        <p>{payload['scholarship']['about'][0]['data']}</p>
+      </section>
+    )
+  }
+
+  function renderBottomSection() {
+    return <section id="bottom-section"></section>
+  }
+
   function formatDateString(dateStr) {
     const parsed = dateStr
       .replace(/Mon |Tue |Wed |Thu |Fri |Sat |Sun/, '')
@@ -108,7 +123,13 @@ function App() {
       />
       {renderErrorMessage()}
       {!isLoaded ? <div>loading</div> : <div>loaded</div>}
-      <div id="content-container">{renderTopSection()}</div>
+      <div id="content-container">
+        {[
+          renderTopSection(),
+          renderMidSection(),
+          renderBottomSection(),
+        ]}
+      </div>
     </div>
   )
 }
