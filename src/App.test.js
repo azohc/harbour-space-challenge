@@ -27,11 +27,13 @@ afterEach(() => server.resetHandlers())
 // clean up once tests are done
 afterAll(() => server.close())
 
-test('loads and displays greeting', async () => {
+test('loads and displays content container', async () => {
   render(<App />)
-  expect(screen.getByText('loading')).toBeInTheDocument()
+  expect(screen.getByTestId('loading-spinner')).toBeInTheDocument()
   await waitFor(() =>
-    expect(screen.getByText('loaded')).toBeInTheDocument()
+    expect(
+      screen.getByTestId('content-container')
+    ).toBeInTheDocument()
   )
 })
 

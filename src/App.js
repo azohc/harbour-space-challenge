@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Countdown from './components/Countdown'
+import Ellipsis from './components/Ellipsis'
 import NavBar from './components/NavBar'
 import TextCard from './components/TextCard'
 
@@ -109,6 +110,12 @@ function App() {
     )
   }
 
+  function renderLoadingEllipsis() {
+    if (!isLoaded) {
+      return <Ellipsis />
+    }
+  }
+
   function renderErrorMessage() {
     if (error) {
       return <div data-testid="api-error">Failed to load content</div>
@@ -122,8 +129,8 @@ function App() {
         }
       />
       {renderErrorMessage()}
-      {!isLoaded ? <div>loading</div> : <div>loaded</div>}
-      <div id="content-container">
+      {renderLoadingEllipsis()}
+      <div data-testid="content-container" id="content-container">
         {[
           renderTopSection(),
           renderMidSection(),
