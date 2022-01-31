@@ -49,8 +49,8 @@ function App() {
         <div className="sponsor-countdown-location">
           <div className="sponsor-container">
             <img src="/zeptolab.png" alt="Zeptolab Logo"></img>
-            <div>Powered by:</div>
-            <div>Zeptolab</div>
+            <div className="powered-by">Powered by:</div>
+            <div className="sponsor">Zeptolab</div>
           </div>
           <TextCard
             title={'Application closes in'}
