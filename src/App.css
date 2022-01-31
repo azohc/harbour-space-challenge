@@ -12,8 +12,8 @@
 }
 
 #top-section {
-  width: 70%;
-  height: 500px;
+  width: 60%;
+  height: 650px;
   text-align: left;
 
   display: flex;
@@ -22,9 +22,9 @@
 }
 
 #top-section > div {
-  width: 45%;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  width: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .program-title {
@@ -39,6 +39,10 @@
   color: #272727;
 }
 
+.program-description > p {
+  padding-top: var(--space-sm);
+}
+
 .encourage-text {
   font-weight: 500;
 }
@@ -50,6 +54,7 @@
 #apply-button {
   all: unset;
   cursor: pointer;
+  margin-top: var(--space-md);
   color: white;
   background-color: var(--purple);
   height: 45px;
