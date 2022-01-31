@@ -10,10 +10,6 @@
   align-items: center;
 }
 
-section {
-  padding: var(--space-lg);
-}
-
 #top-section {
   width: 70%;
   height: 500px;
@@ -42,9 +38,6 @@ section {
   color: #272727;
 }
 
-.sponsor-countdown-location {
-}
-
 .encourage-text {
   font-weight: 500;
 }
@@ -65,15 +58,14 @@ section {
   font-size: small;
 }
 
-.sponsor-container {
-}
-
 @media (max-width: 768px), (max-width: 834px) {
   #top-section > div {
-    width: fit-content;
+    width: 100%;
+    margin: unset;
   }
   #top-section {
     height: unset;
+    width: 90%;
   }
   .program-description {
     order: 2;

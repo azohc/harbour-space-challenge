@@ -1,0 +1,33 @@
+#container,
+#container-multi {
+  margin-top: var(--space-lg);
+  border: 2px solid #cecece6e;
+  border-radius: 5px;
+  padding: var(--space-lg);
+}
+
+#container-multi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+#title {
+  font-size: medium;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+#subtitle {
+  padding-top: 10px;
+  font-weight: 300;
+}
+
+#text {
+  padding-top: var(--space-xxs);
+  font-size: medium;
+  font-weight: 200;
+}
+
+@media (max-width: 768px), (max-width: 834px) {
+}
